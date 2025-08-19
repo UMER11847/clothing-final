@@ -251,6 +251,8 @@ import Image from "next/image"
 import { ChevronDown, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ContactSection from "@/components/ContactSection"
+import YarnToGarment from "@/components/YarnToGarment"
+
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -377,6 +379,10 @@ export default function HomePage() {
         </div>
       </div>
 
+      <div>
+        <YarnToGarment />
+      </div>
+
       {/* Products Section */}
       <div className="bg-white py-16 px-8">
         <div className="max-w-6xl mx-auto">
@@ -384,7 +390,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
               <div className="relative flex items-center">
-                <div className="w-6 h-6 rounded-full absolute -left-2 z-0" style={{ backgroundColor: "#1EAD4C" }}></div>
+                <div className="absolute -translate-x-1 -translate-y-1/3 w-8 h-8 bg-green-500 rounded-full mr-1 z-0"></div>
                 <h2 className="text-4xl font-bold relative z-10 pl-4" style={{ color: "#000000" }}>
                   Products
                 </h2>
@@ -395,7 +401,7 @@ export default function HomePage() {
 
           {/* Dynamic Product Section */}
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-gray-900 mb-8">{products[activeProduct].title}</h3>
+            {/* <h3 className="text-3xl font-bold text-gray-900 mb-8">{products[activeProduct].title}</h3> */}
 
             {/* Product Image with Hotspots */}
             <div className="relative inline-block w-full">
@@ -425,21 +431,22 @@ export default function HomePage() {
                     style={{ left: hotspot.left, top: hotspot.top, transform: "translate(-50%, -50%)" }}
                   >
                     <button
-                      className="w-8 h-8 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                      className="w-5 h-5 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
                       onClick={() =>
                         setActiveHotspot(activeHotspot === index ? null : index)
                       }
                     >
-                      <Plus className="w-4 h-4 text-gray-600" />
+                      <Plus size={16} strokeWidth={2.75} absoluteStrokeWidth className="w-3 h-3 text-gray-600" />
+                    
                     </button>
 
                     {/* 🔥 Inline popup only for Hoodie */}
                     {activeProduct === "Hoodie" && activeHotspot === index && hotspot.detailImage && (
-                      <div className="absolute left-10 top-0 bg-white border rounded-lg shadow-lg p-2">
+                      <div className="absolute left-10 top-0 bg-transparent rounded-sm shadow-lg p-2">
                         <img
                           src={hotspot.detailImage}
                           alt="Detail"
-                          className="max-w-[150px] max-h-[150px] rounded-md"
+                          className="max-w-[270px] max-h-[178px] rounded-md"
                         />
                       </div>
                     )}
