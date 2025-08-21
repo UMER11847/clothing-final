@@ -28,9 +28,9 @@ export default function HeroBanner() {
           priority
         />
 
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 max-w-sm">
+        <div className="absolute right-40 top-1/2 -translate-y-1/2 max-w-sm">
           <div className="text-white mb-6">
-            <h1 className="text-3xl md:text-4xl font-black leading-tight mb-1 whitespace-nowrap">
+            <h1 className=" text-5xl font-extrabold md:text-4xl font-black leading-tight mb-1 whitespace-nowrap">
               Blanks Coming Soon<span className="inline-block w-2 h-2 bg-green-500 rounded-full ml-1"></span>
             </h1>
             <h1 className="text-3xl md:text-4xl font-black leading-tight mb-3 whitespace-nowrap">Early Signup</h1>
