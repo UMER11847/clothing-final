@@ -252,7 +252,8 @@ import { ChevronDown, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ContactSection from "@/components/ContactSection"
 import YarnToGarment from "@/components/YarnToGarment"
-
+import  HeroBanner  from "@/components/HeroBanner"
+    
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -378,9 +379,13 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
+    
+      <div>
+        <HeroBanner />
+      </div>
       <div>
         <YarnToGarment />
+         
       </div>
 
       {/* Products Section */}
