@@ -368,9 +368,9 @@ export default function HomePage() {
           </div>
 
           {/* Hero CTA */}
-          <div className="flex items-end justify-center min-h-[calc(100vh-140px)] pb-20">
+          <div className="flex items-end justify-center min-h-[calc(100vh-140px)] pb-25">
             <Button
-              className="px-8 py-4 text-lg font-semibold text-white border-0 hover:opacity-90 transition-opacity flex items-center gap-3"
+              className="px-6 py-7 text-3xl font-semibold text-white border-0 hover:opacity-90 transition-opacity flex items-center gap-4"
               style={{ background: "linear-gradient(135deg, #25A74B 0%, #99E8B0 100%)" }}
             >
               Apply for Manufacturing

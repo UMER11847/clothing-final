@@ -10,12 +10,19 @@ export default function HeroBanner() {
           <Image
             src="/Group 14.png"
             alt="Cloth Thread"
-            width={200}
-            height={60}
-            className="h-12 w-auto"
+            width={300}
+            height={90}
+            className="h-18 w-auto"
           />
         </div>
-        <p className="text-gray-700 italic text-lg">Sustainably Stitched, Ethically Made</p>
+        <p className="font-white leading-none mb-1 whitespace-nowrap text-black italic"
+              style={{
+                fontFamily: "Causten, sans-serif",
+                fontWeight: 490,
+                fontSize: "30px",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}>Sustainably Stitched, Ethically Made</p>
       </header>
 
       <div className="relative w-full flex-1 flex">
@@ -23,20 +30,40 @@ export default function HeroBanner() {
           src="/Mask group (12).png"
           alt="Premium t-shirts on concrete floor"
           width={1920}
-          height={1080}
-          className="w-full h-full object-cover"
+          height={1000}
+          className="w-full h-full object-contain"
           priority
         />
 
-        <div className="absolute right-40 top-1/2 -translate-y-1/2 max-w-sm">
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 max-w-4xl">
           <div className="text-white mb-6">
-            <h1 className=" text-5xl font-extrabold md:text-4xl font-black leading-tight mb-1 whitespace-nowrap">
+            <h1
+              className="font-white leading-none mb-1 whitespace-nowrap text-white"
+              style={{
+                fontFamily: "Causten, sans-serif",
+                fontWeight: 900,
+                fontSize: "55px",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}
+            >
               Blanks Coming Soon<span className="inline-block w-2 h-2 bg-green-500 rounded-full ml-1"></span>
             </h1>
-            <h1 className="text-3xl md:text-4xl font-black leading-tight mb-3 whitespace-nowrap">Early Signup</h1>
+            <h1
+              className="font-black leading-none mb-3 whitespace-nowrap text-white"
+              style={{
+                fontFamily: "Causten, sans-serif",
+                fontWeight: 900,
+                fontSize: "55px",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}
+            >
+              Early Signup
+            </h1>
           </div>
 
-          <div className="relative">
+          <div className="relative max-w-sm">
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             <Input
               type="email"
