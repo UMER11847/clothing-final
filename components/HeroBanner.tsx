@@ -22,6 +22,7 @@ export default function HeroBanner() {
                 fontSize: "30px",
                 lineHeight: "100%",
                 letterSpacing: "0%",
+                
               }}>Sustainably Stitched, Ethically Made</p>
       </header>
 
