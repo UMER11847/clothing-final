@@ -60,34 +60,33 @@ export default function YarnToGarmentPage() {
   const currentData = stepData[currentStep - 1]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-auto bg-white">
       {/* Header Section */}
-      <div className="pt-16 pb-8 px-8 text-center">
-        <div className="flex items-center justify-center mb-4">
+      <div className="pt-8 pb-6 px-8 text-center">
+        <div className="flex items-center justify-center mb-2">
           {/* Green circular logo */}
-          <div className="bg-green-500 rounded-full mt-[-28px] mr-[-19px] w-8 h-[34px]"></div>
+          <div className="bg-green-500 rounded-full mr-[-16px] w-8 h-[34px]"></div>
           <h1 className="text-5xl text-black font-semibold">Yarn To Garment</h1>
         </div>
-        <p className="text-xl text-gray-600 mt-[-12px] mb-[13px] tracking-widest">
+        <p className="text-xl text-gray-600 mt-2 mb-4 tracking-widest">
           Transforming raw yarn into high-quality clothing
         </p>
       </div>
 
       {/* Main Content Section */}
-      <div className="px-4 pb-16 flex justify-center items-center">
-        <div className="bg-green-50 rounded-[50px] pb-8 pt-16 px-16 max-w-7xl relative w-[212%]">
-          {/* Increased border radius from rounded-[40px] to rounded-[60px] for more roundness */}
-          <div className="bg-white rounded-[60px] shadow-sm p-12 px-20 mx-auto max-w-5xl mb-8 border-transparent border-[13px] ml-[92px] mr-[92px] pr-px pl-[62px] pt-6 pb-6">
-            <div className="flex items-center px-0 py-0 flex-row gap-[158px] mx-[-8px]">
+       <div className="px-4 pb-0 flex justify-center items-center mb-20"> {/* mb to add white space after the section */}
+        <div className="bg-green-50 rounded-[50px] pb-8 pt-16 px-4 sm:px-8 lg:px-16 max-w-screen-xl w-full">
+          <div className="bg-white rounded-[60px] shadow-sm p-8 sm:p-12 lg:px-20 mx-auto max-w-5xl mb-8 border-transparent border-[13px]">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[158px]">
               {/* Left Content - Text */}
-              <div className="flex-1 text-left mx-[-31px]">
-                <h2 className="text-5xl text-black mt-[3px] px-0 mb-2 leading-[3.5rem] font-normal">{currentData.title}</h2>
-                <p className="text-gray-700 leading-relaxed text-2xl">{currentData.description}</p>
+              <div className="flex-1 text-left">
+                <h2 className="text-4xl sm:text-5xl text-black mb-4 leading-tight font-normal">{currentData.title}</h2>
+                <p className="text-gray-700 leading-relaxed text-lg sm:text-2xl">{currentData.description}</p>
               </div>
 
               {/* Right Content - Image */}
-              <div className="flex-shrink-0 px-0 mx-[31px] ml-[-31px]">
-                <div className="rounded-[40px] overflow-hidden mx-[26px] my-3.5 h-64 w-[238px]">
+              <div className="flex-shrink-0">
+                <div className="rounded-[40px] overflow-hidden h-64 w-[238px]">
                   <img
                     src={currentData.image || "/placeholder.svg"}
                     alt={currentData.alt}
@@ -98,20 +97,21 @@ export default function YarnToGarmentPage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-center flex-row gap-[45px]">
+          {/* Navigation Buttons */}
+          <div className="flex items-center justify-center flex-row gap-6">
             <Button
               variant="outline"
-              className="bg-green-100 border-green-200 text-green-700 hover:bg-green-200 px-8 py-3 rounded-full text-lg disabled:opacity-50"
+              className="bg-green-100 border-green-200 text-green-700 hover:bg-green-200 px-6 py-2 rounded-full text-base sm:text-lg disabled:opacity-50"
               onClick={handleBack}
               disabled={currentStep === 1}
             >
               Back
             </Button>
 
-            <span className="text-gray-600 font-medium text-lg">{currentStep}/6</span>
+            <span className="text-gray-600 font-medium text-base sm:text-lg">{currentStep}/6</span>
 
             <Button
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full text-lg disabled:opacity-50"
+              className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full text-base sm:text-lg disabled:opacity-50"
               onClick={handleNext}
               disabled={currentStep === 6}
             >

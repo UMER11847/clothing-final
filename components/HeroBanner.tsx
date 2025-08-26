@@ -4,9 +4,9 @@ import { Mail } from "lucide-react"
 
 export default function HeroBanner() {
   return (
-    <div className="h-screen w-full flex flex-col">
-      <header className="bg-white py-8 text-center flex-shrink-0">
-        <div className="flex justify-center mb-2">
+    <div className="w-full flex flex-col">
+      <header className="bg-white py-4 text-center">
+        <div className="flex justify-center">
           <Image
             src="/Group 14.png"
             alt="Cloth Thread"
@@ -15,18 +15,21 @@ export default function HeroBanner() {
             className="h-18 w-auto"
           />
         </div>
-        <p className="font-white leading-none mb-1 whitespace-nowrap text-black italic"
-              style={{
-                fontFamily: "Causten, sans-serif",
-                fontWeight: 490,
-                fontSize: "30px",
-                lineHeight: "100%",
-                letterSpacing: "0%",
-                
-              }}>Sustainably Stitched, Ethically Made</p>
+        <p
+          className="mt-4 leading-none whitespace-nowrap text-black italic"
+          style={{
+            fontFamily: "Causten, sans-serif",
+            fontWeight: 490,
+            fontSize: "30px",
+            lineHeight: "100%",
+            letterSpacing: "0%",
+          }}
+        >
+          Sustainably Stitched, Ethically Made
+        </p>
       </header>
 
-      <div className="relative w-full flex-1 flex">
+      <div className="relative w-full min-h-[600px] flex overflow-hidden">
         <Image
           src="/Mask group (12).png"
           alt="Premium t-shirts on concrete floor"
@@ -36,28 +39,29 @@ export default function HeroBanner() {
           priority
         />
 
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 max-w-4xl">
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 max-w-4xl">
           <div className="text-white mb-6">
             <h1
-              className="font-white leading-none mb-1 whitespace-nowrap text-white"
+              className="leading-none whitespace-nowrap text-white"
               style={{
                 fontFamily: "Causten, sans-serif",
                 fontWeight: 900,
-                fontSize: "55px",
-                lineHeight: "100%",
-                letterSpacing: "0%",
+                fontSize: "65px",
+                lineHeight: "110%",
+                letterSpacing: "-3px",
               }}
             >
-              Blanks Coming Soon<span className="inline-block w-2 h-2 bg-green-500 rounded-full ml-1"></span>
+              Blanks Coming Soon
+              <span className="inline-block w-2 h-2 bg-green-500 rounded-full ml-1"></span>
             </h1>
             <h1
-              className="font-black leading-none mb-3 whitespace-nowrap text-white"
+              className="leading-none whitespace-nowrap text-white"
               style={{
                 fontFamily: "Causten, sans-serif",
                 fontWeight: 900,
-                fontSize: "55px",
-                lineHeight: "100%",
-                letterSpacing: "0%",
+                fontSize: "65px",
+                lineHeight: "110%",
+                letterSpacing: "-3px",
               }}
             >
               Early Signup
@@ -69,7 +73,7 @@ export default function HeroBanner() {
             <Input
               type="email"
               placeholder="Enter your email address"
-              className="pl-10 py-3 bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
+              className="pl-10 py-6 bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
             />
           </div>
         </div>

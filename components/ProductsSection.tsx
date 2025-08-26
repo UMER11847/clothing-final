@@ -19,10 +19,10 @@ const products = {
     title: "Hoodie",
     image: "/786.png",
     hotspots: [
-     { left: "680px", top: "266px", detailImage: "/2.png" },
-        { left: "630px", top: "355px", detailImage: "/1.png" },
-        { left: "430px", top: "470px", detailImage: "/4.png" },
-        { left: "750px", top: "440px", detailImage: "/3.png" },
+     { left: "840px", top: "310px", detailImage: "/2.png" },
+        { left: "780px", top: "415px", detailImage: "/1.png" },
+        { left: "540px", top: "560px", detailImage: "/4.png" },
+        { left: "910px", top: "500px", detailImage: "/3.png" },
     ],
   },
   "Pants": {
@@ -44,7 +44,7 @@ export default function ProductsSection() {
   }
 
   return (
-    <section className="flex flex-col min-h-[600px] bg-white">
+    <section className="flex flex-col min-h-[900px] bg-white">
       {/* Header */}
       <div className="text-center pt-[6px] pb-[4px]">
         <div className="flex items-center justify-center mb-4">
@@ -62,14 +62,14 @@ export default function ProductsSection() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-8">
         {/* Product Image Container */}
-        <div className="relative rounded-3xl p-12 mb-8 w-full mx-4 bg-[rgba(240,252,243,1)]">
-          <div className="relative w-full flex justify-center items-center min-h-[500px]">
+        <div className="relative rounded-3xl px-12 pt-20 pb-20 mb-8 w-[95%] bg-[rgba(240,252,243,1)] mx-auto">
+          <div className="relative w-full flex justify-center items-center min-h-[600px]">
             <Image
               src={products[activeProduct].image || "/placeholder.svg"}
               alt={`${products[activeProduct].title} Product`}
-              width={600}
-              height={500}
-              className="object-contain max-h-[600px] mx-auto"
+              width={800}
+              height={700}
+              className="object-contain max-h-[700px] mx-auto"
             />
 
             {/* Hotspots */}
