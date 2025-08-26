@@ -19,10 +19,10 @@ const products = {
     title: "Hoodie",
     image: "/786.png",
     hotspots: [
-     { left: "840px", top: "310px", detailImage: "/2.png" },
-        { left: "780px", top: "415px", detailImage: "/1.png" },
-        { left: "540px", top: "560px", detailImage: "/4.png" },
-        { left: "910px", top: "500px", detailImage: "/3.png" },
+      { left: "51%", top: "51%", detailImage: "/2.png" },
+      { left: "43%", top: "70%", detailImage: "/1.png" },
+      { left: "10%", top: "90%", detailImage: "/4.png" },
+      { left: "63%", top: "80%", detailImage: "/3.png" },
     ],
   },
   "Pants": {
@@ -33,7 +33,7 @@ const products = {
       { left: "55%", top: "60%", detailImage: "/images/pants-detail2.png" },
     ],
   },
-}
+};
 
 export default function ProductsSection() {
   const [activeProduct, setActiveProduct] = useState("T-Shirt")
@@ -78,13 +78,13 @@ export default function ProductsSection() {
       <div className="flex-1 flex flex-col items-center justify-center px-8">
         {/* Product Image Container */}
         <div className="relative rounded-3xl px-12 pt-20 pb-20 mb-8 w-[95%] bg-[rgba(240,252,243,1)] mx-auto">
-          <div className="relative w-full flex justify-center items-center min-h-[600px]">
+          <div className="relative w-[800px] h-[700px] mx-auto">
             <Image
               src={products[activeProduct].image || "/placeholder.svg"}
               alt={`${products[activeProduct].title} Product`}
               width={800}
               height={700}
-              className="object-contain max-h-[700px] mx-auto"
+              className="object-contain"
             />
 
             {/* Hotspots */}
