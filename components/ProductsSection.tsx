@@ -47,12 +47,27 @@ export default function ProductsSection() {
     <section className="flex flex-col min-h-[900px] bg-white">
       {/* Header */}
       <div className="text-center pt-[6px] pb-[4px]">
-        <div className="flex items-center justify-center mb-4">
+        <div className="flex items-center justify-center mb-8">
           {/* Green circular logo */}
-           <div className="bg-green-500 rounded-full mt-[-28px] mr-[-19px] w-8 h-[34px]"></div>
-          <h1 className="text-5xl text-black font-semibold">Products</h1>
+           <div className="bg-green-500 rounded-full mt-[-40px] mr-[-25px] w-10 h-[40px]"></div>
+          <h1 className="text-5xl text-black font-semibold"
+          style={{
+                fontFamily: "Causten, sans-serif",
+                fontWeight: 600,
+                fontSize: "65px",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}>Products</h1>
         </div>
-        <p className="text-xl text-gray-600 mt-[-12px] mb-[13px] tracking-widest">
+        <p className="text-xl text-gray-600 mt-[-12px] mb-[13px] tracking-widest pb-10"
+        style={{
+          fontFamily: "Poppins, sans-serif",
+          fontWeight: 300,
+          fontStyle: "light",
+          fontSize: "32px",
+          lineHeight: "100%",
+          letterSpacing: "0%",
+        }}>
           Select the garment type to proceed with inspection
         </p>
       </div> 
