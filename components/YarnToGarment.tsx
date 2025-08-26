@@ -65,10 +65,25 @@ export default function YarnToGarmentPage() {
       <div className="pt-8 pb-6 px-8 text-center">
         <div className="flex items-center justify-center mb-2">
           {/* Green circular logo */}
-          <div className="bg-green-500 rounded-full mr-[-16px] w-8 h-[34px]"></div>
-          <h1 className="text-5xl text-black font-semibold">Yarn To Garment</h1>
+          <div className="bg-green-500 rounded-full mr-[-20px] w-10 h-[40px] mt-[-30px]"></div>
+          <h1 className="text-5xl text-black font-semibold"
+          style={{
+                fontFamily: "Causten, sans-serif",
+                fontWeight: 600,
+                fontSize: "65px",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}>Yarn To Garment</h1>
         </div>
-        <p className="text-xl text-gray-600 mt-2 mb-4 tracking-widest">
+        <p className="text-xl text-gray-600 mt-2 mb-4 tracking-widest"
+         style={{
+          fontFamily: "Poppins, sans-serif",
+          fontWeight: 300,
+          fontStyle: "light",
+          fontSize: "32px",
+          lineHeight: "100%",
+          letterSpacing: "0%",
+        }}>
           Transforming raw yarn into high-quality clothing
         </p>
       </div>
