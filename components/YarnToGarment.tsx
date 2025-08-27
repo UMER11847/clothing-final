@@ -89,50 +89,80 @@ export default function YarnToGarmentPage() {
       </div>
 
       {/* Main Content Section */}
-       <div className="px-4 pb-0 flex justify-center items-center mb-20"> {/* mb to add white space after the section */}
-        <div className="bg-green-50 rounded-[50px] pb-8 pt-16 px-4 sm:px-8 lg:px-16 max-w-screen-xl w-full">
-          <div className="bg-white rounded-[60px] shadow-sm p-8 sm:p-12 lg:px-20 mx-auto max-w-5xl mb-8 border-transparent border-[13px]">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[158px]">
-              {/* Left Content - Text */}
-              <div className="flex-1 text-left">
-                <h2 className="text-4xl sm:text-5xl text-black mb-4 leading-tight font-normal">{currentData.title}</h2>
-                <p className="text-gray-700 leading-relaxed text-lg sm:text-2xl">{currentData.description}</p>
-              </div>
+       <div className="px-4 pb-0 flex justify-center items-center mb-40"> {/* mb to add white space after the section */}
+        <div  className="bg-green-50 rounded-[50px] mx-auto"
+  style={{ 
+    width: "1800px",   // 🔹 Set custom width
+    minHeight: "600px", // 🔹 Set custom height
+    padding: "50px"    // 🔹 Custom padding
+  }}>
+          <div className="bg-white rounded-[80px]  mx-auto border-transparent border-[13px]"
+      style={{
+        width: "1200px",   // 🔹 Custom width
+        minHeight: "300px", // 🔹 Custom height
+        padding: "50px"    // 🔹 Custom padding
+      }}>
+<div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[120px]">
+    {/* Left Content - Text */}
+    <div className="flex-1 text-left">
+      <h2 className="text-5xl sm:text-6xl text-black mb-6 leading-snug font-semibold"
+      style={{
+                fontFamily: "Causten, sans-serif",
+                fontWeight: 540,
+                fontSize: "65px",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}>
+        {currentData.title}
+      </h2>
+      <p className="text-gray-700 leading-relaxed text-xl sm:text-2xl lg:text-3xl"
+      style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 50,
+                fontSize: "35px",
+                lineHeight: "140%",
+                letterSpacing: "0%",
+              }}>
+        {currentData.description}
+      </p>
+    </div>
 
               {/* Right Content - Image */}
-              <div className="flex-shrink-0">
-                <div className="rounded-[40px] overflow-hidden h-64 w-[238px]">
-                  <img
-                    src={currentData.image || "/placeholder.svg"}
-                    alt={currentData.alt}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+             <div className="flex-shrink-0">
+      <div className="rounded-[40px] overflow-hidden h-[350px] w-[320px]">
+        <img
+          src={currentData.image || "/placeholder.svg"}
+          alt={currentData.alt}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-center flex-row gap-6">
-            <Button
-              variant="outline"
-              className="bg-green-100 border-green-200 text-green-700 hover:bg-green-200 px-6 py-2 rounded-full text-base sm:text-lg disabled:opacity-50"
-              onClick={handleBack}
-              disabled={currentStep === 1}
-            >
-              Back
-            </Button>
+         <div className="flex items-center justify-center flex-row gap-20 mt-10"> {/* 🔹 added mt-10 */}
+  <Button
+    variant="outline"
+    className="bg-green-100 border-green-200 text-green-700 hover:bg-green-200 
+             px-11 py-6 rounded-full text-xl sm:text-xl disabled:opacity-50"
+    onClick={handleBack}
+    disabled={currentStep === 1}
+  >
+    Back
+  </Button>
 
-            <span className="text-gray-600 font-medium text-base sm:text-lg">{currentStep}/6</span>
+  <span className="text-gray-600 font-medium text-xl">{currentStep}/6</span>
 
-            <Button
-              className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full text-base sm:text-lg disabled:opacity-50"
-              onClick={handleNext}
-              disabled={currentStep === 6}
-            >
-              Next
-            </Button>
-          </div>
+  <Button
+    className="bg-green-500 hover:bg-green-600 text-white 
+             px-11 py-6 rounded-full text-xl sm:text-xl disabled:opacity-50"
+    onClick={handleNext}
+    disabled={currentStep === 6}
+  >
+    Next
+  </Button>
+</div>
         </div>
       </div>
     </div>
