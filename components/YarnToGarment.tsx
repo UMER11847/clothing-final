@@ -75,7 +75,7 @@ export default function YarnToGarmentPage() {
                 letterSpacing: "0%",
               }}>Yarn To Garment</h1>
         </div>
-        <p className="text-xl text-gray-600 mt-2 mb-4 tracking-widest"
+        <p className="text-xl text-gray-600 mt-5 mb-15 tracking-widest"
          style={{
           fontFamily: "Poppins, sans-serif",
           fontWeight: 300,
