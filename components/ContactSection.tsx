@@ -1,3 +1,6 @@
+"use client"
+import { useState } from "react"
+import emailjs from "emailjs-com"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -5,6 +8,55 @@ import { Textarea } from "@/components/ui/textarea"
 import { Twitter, Facebook, Linkedin, Instagram } from "lucide-react"
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(null)
+
+  // handle input change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  // handle form submit
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    emailjs
+      .send(
+        "service_7k8wrv6", // <-- replace with EmailJS Service ID
+        "template_s87l1pp", // <-- replace with EmailJS Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "n9Oj-NpM3MhhR5xLH" // <-- replace with EmailJS Public Key
+      )
+      .then(
+        () => {
+          setLoading(false)
+          setSuccess("Message sent successfully! ✅")
+          setFormData({ name: "", email: "", subject: "", message: "" })
+        },
+        (error) => {
+          console.error("FAILED...", error)
+          setLoading(false)
+          setSuccess("Failed to send message ❌. Try again!")
+        }
+      )
+  }
+
   return (
     <div className="min-h-screen bg-white p-30">
       <div className="max-w-7xl mx-auto">
@@ -14,37 +66,75 @@ export default function ContactPage() {
             <Card className="p-8 shadow-[8px_8px_16px_rgba(0,0,0,0.25)] px-16 pt-[54px] w-[600px] h-auto">
               <h2 className="text-gray-900 mb-8 font-bold text-xl">Leave your Message</h2>
 
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-gray-700 mb-2 font-bold text-lg">Name</label>
-                    <Input placeholder="Your Name" className="bg-gray-50 border-gray-200 h-12" />
+                    <Input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your Name"
+                      className="bg-gray-50 border-gray-200 h-12"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-gray-700 mb-2 font-bold text-lg">Email</label>
-                    <Input placeholder="Your Email" type="email" className="bg-gray-50 border-gray-200 h-12" />
+                    <Input
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Your Email"
+                      type="email"
+                      className="bg-gray-50 border-gray-200 h-12"
+                      required
+                    />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-gray-700 mb-2 font-bold text-lg">Subject</label>
-                  <Input placeholder="Subject" className="bg-gray-50 border-gray-200 h-12" />
+                  <Input
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="Subject"
+                    className="bg-gray-50 border-gray-200 h-12"
+                    required
+                  />
                 </div>
 
                 <div>
                   <label className="block text-gray-700 mb-2 font-bold text-lg">Message</label>
                   <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Message"
                     className="bg-gray-50 border-gray-200 min-h-[160px] resize-none mx-0 flex-row mb-[34px] pb-0"
+                    required
                   />
                 </div>
 
+                {success && (
+                  <p
+                    className={`text-sm ${
+                      success.includes("success") ? "text-green-600" : "text-red-600"
+                    }`}
+                  >
+                    {success}
+                  </p>
+                )}
+
                 <div className="flex justify-end">
                   <Button
+                    type="submit"
                     className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full h-12 font-semibold text-xl"
                     size="lg"
+                    disabled={loading}
                   >
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </Button>
                 </div>
               </form>
@@ -75,7 +165,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-gray-900 mb-1 font-bold text-lg">Office</h3>
-                    <p className="text-gray-600 text-sm">1234 Fabric Lane, Karachi</p>
+                    <p className="text-gray-600 text-sm">Korangi brocs chorangi</p>
                   </div>
                 </div>
               </Card>
@@ -91,7 +181,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-gray-900 mb-1 font-bold text-lg">Phone</h3>
-                    <p className="text-gray-600 text-sm">+1(555) 123-4567</p>
+                    <p className="text-gray-600 text-sm">+923344700033</p>
                   </div>
                 </div>
               </Card>
@@ -123,7 +213,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-gray-900 mb-1 font-bold text-lg">Email</h3>
-                    <p className="text-gray-600 text-sm">contact@cloththread.example.com</p>
+                    <p className="text-gray-600 text-sm">smshayan954@gmail.com</p>
                   </div>
                 </div>
               </Card>
