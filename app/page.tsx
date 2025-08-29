@@ -9,6 +9,8 @@ import YarnToGarment from "@/components/YarnToGarment";
 import HeroBanner from "@/components/HeroBanner";
 import ProductsSection from "@/components/ProductsSection";
 import ManufacturingForm from "@/components/ManufacturingForm";
+import ServicesSection from "@/components/ServicesSection"
+import StatsSection from "@/components/StatsSection"
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -163,10 +165,16 @@ export default function HomePage() {
         <HeroBanner />
       </div>
       <div>
+        <ServicesSection />
+      </div>
+      <div>
         <YarnToGarment />
       </div>
       <div>
         <ProductsSection />
+      </div>
+      <div>
+        <StatsSection />
       </div>
 
       {/* Contact Section */}

@@ -58,7 +58,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white p-30">
+    <div className="min-h-screen bg-white p-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex gap-12 items-start">
           {/* Left Side - Contact Form */}

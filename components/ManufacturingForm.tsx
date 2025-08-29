@@ -256,13 +256,13 @@ export default function ManufacturingForm() {
           </div>
 
           {/* Form Fields */}
-          <div className="space-y-6 mx-4">
+          <div className="max-w-[1730px] mx-auto space-y-6">
             <Input
               placeholder="Your Email"
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
-              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 mx-[50px] px-[31px] text-gray-400 placeholder:text-gray-400"
+              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100  px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "1730px",
                 maxWidth: "100%",
@@ -279,7 +279,7 @@ export default function ManufacturingForm() {
                 placeholder="First Name"
                 value={formData.firstName}
                 onChange={(e) => handleInputChange("firstName", e.target.value)}
-                className="h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 mx-[50px] px-[31px] text-gray-400 placeholder:text-gray-400"
+                className="h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100  px-[31px] text-gray-400 placeholder:text-gray-400"
                 style={{
                   width: "985px",
                   maxWidth: "100%",
@@ -294,7 +294,7 @@ export default function ManufacturingForm() {
                 placeholder="Last Name"
                 value={formData.lastName}
                 onChange={(e) => handleInputChange("lastName", e.target.value)}
-                className="h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-[31px] mx-[95px] text-gray-400 placeholder:text-gray-400"
+                className="h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-[31px]  text-gray-400 placeholder:text-gray-400"
                 style={{
                   width: "985px",
                   maxWidth: "100%",
@@ -311,7 +311,7 @@ export default function ManufacturingForm() {
               placeholder="Country"
               value={formData.country}
               onChange={(e) => handleInputChange("country", e.target.value)}
-              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 mx-[50px] px-[31px] text-gray-400 placeholder:text-gray-400"
+              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100  px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "1730px",
                 maxWidth: "100%",
@@ -324,7 +324,7 @@ export default function ManufacturingForm() {
             />
 
             <div className="relative mx-4">
-              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 flex items-center gap-2 z-20 mx-[17px] flex-row">
+              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 flex items-center gap-2 z-20  flex-row">
                 <button
                   type="button"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -374,15 +374,15 @@ export default function ManufacturingForm() {
                 placeholder="Phone Number"
                 value={formData.phoneNumber}
                 onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
-                className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 overflow-hidden mx-[29px] text-gray-400 placeholder:text-gray-400 pl-[90px]"
+                className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 overflow-hidden  text-gray-400 placeholder:text-gray-400 pl-[90px]"
                 style={{
-                  width: "1730px",
-                  maxWidth: "100%",
+                  // width: "1730px",
+                  // maxWidth: "100%",
                   fontFamily: "Causten",
                   fontWeight: 500,
                   fontSize: "36px",
                   lineHeight: "120%",
-                  letterSpacing: "0%",
+                  
                 }}
               />
             </div>
@@ -391,7 +391,7 @@ export default function ManufacturingForm() {
               placeholder="Official website or any social media account"
               value={formData.website}
               onChange={(e) => handleInputChange("website", e.target.value)}
-              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 mx-[50px] px-[31px] text-gray-400 placeholder:text-gray-400"
+              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100  px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "1730px",
                 maxWidth: "100%",
@@ -405,22 +405,22 @@ export default function ManufacturingForm() {
           </div>
 
           {/* Business Name Section */}
-          <div className="space-y-2 mx-4">
-            <label className="font-medium text-gray-900 py-0 text-3xl leading-8 mx-[62px] my-0 px-0.5 flex-row">
+          <div className="max-w-[1730px] mx-auto space-y-6">
+            <label className="font-medium text-gray-900 py-0 text-3xl leading-8 mx-[40px] my-0 px-0.5 flex-row">
               Business Name
             </label>
             <Input
               placeholder="Business Name"
               value={formData.businessName}
               onChange={(e) => handleInputChange("businessName", e.target.value)}
-              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 mx-[50px] px-[31px] text-gray-400 placeholder:text-gray-400"
+              className="w-full h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100  px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "1730px",
                 maxWidth: "100%",
                 fontFamily: "Causten",
                 fontWeight: 500,
                 fontSize: "36px",
-                lineHeight: "120%",
+                lineHeight: "150%",
                 letterSpacing: "0%",
               }}
             />
@@ -471,7 +471,7 @@ export default function ManufacturingForm() {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="bg-green-500 hover:bg-green-600 text-white font-medium border border-gray-200 text-4xl rounded-[5px] mx-[5%]"
+            className="bg-green-600 hover:bg-green-700 text-white font-medium border border-gray-200 text-4xl rounded-[5px] mx-[5%]"
             style={{
               width: "1730px",
               height: "85px",
