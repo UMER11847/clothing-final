@@ -10,19 +10,19 @@ const products = {
     title: "Hoodie",
     image: "/falcon front.png",
     hotspots: [
-      { left: "50%", top: "54%", detailImage: "/2.webp" },
-      { left: "67%", top: "55%", detailImage: "/1.webp" },
-      { left: "35%", top: "100%", detailImage: "/3.webp" },
-      { left: "88%", top: "100%", detailImage: "/4.webp" },
+      { left: "50%", top: "54%", detailImage: "/2.png" },
+      { left: "67%", top: "55%", detailImage: "/1.png" },
+      { left: "35%", top: "100%", detailImage: "/3.png" },
+      { left: "88%", top: "100%", detailImage: "/4.png" },
     ],
   },
   "Pants": {
     title: "Pants",
     image: "/denim front.png",
     hotspots: [
-      { left: "60%", top: "23%", detailImage: "/33.webp" },
-      { left: "45%", top: "12%", detailImage: "/22.webp" },
-      { left: "39%", top: "102%", detailImage: "/11.webp" },
+      { left: "60%", top: "23%", detailImage: "/33.png" },
+      { left: "45%", top: "12%", detailImage: "/22.png" },
+      { left: "39%", top: "102%", detailImage: "/11.png" },
     ],
   },
 }
