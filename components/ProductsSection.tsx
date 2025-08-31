@@ -8,34 +8,34 @@ import { Button } from "@/components/ui/button"
 const products = {
   Hoodie: {
     title: "Hoodie",
-    image: "/falcon front.png",
+    image: "/falcon front.webp",
     hotspots: [
       // Logo (center chest)
-      { left: "50%", top: "46%", detailImage: "/2.png", mobileLeft: "50%", mobileTop: "46%" },
+      { left: "50%", top: "46%", detailImage: "/2.webp", mobileLeft: "50%", mobileTop: "46%" },
 
       // Right chest area
-      { left: "67%", top: "50%", detailImage: "/1.png", mobileLeft: "67%", mobileTop: "50%" },
+      { left: "67%", top: "50%", detailImage: "/1.webp", mobileLeft: "67%", mobileTop: "50%" },
 
       // Left pocket area
-      { left: "40%", top: "86%", detailImage: "/3.png", mobileLeft: "40%", mobileTop: "72%" },
+      { left: "40%", top: "86%", detailImage: "/3.webp", mobileLeft: "40%", mobileTop: "72%" },
 
       // Right pocket area
-      { left: "84%", top: "85%", detailImage: "/4.png", mobileLeft: "87%", mobileTop: "69%" },
+      { left: "84%", top: "85%", detailImage: "/4.webp", mobileLeft: "87%", mobileTop: "69%" },
     ],
   },
 
   Pants: {
     title: "Pants",
-    image: "/denim front.png",
+    image: "/denim front.webp",
     hotspots: [
       // Upper thigh
-      { left: "55%", top: "21%", detailImage: "/33.png", mobileLeft: "55%", mobileTop: "33%" },
+      { left: "55%", top: "21%", detailImage: "/33.webp", mobileLeft: "55%", mobileTop: "33%" },
 
       // Waist area
-      { left: "45%", top: "10%", detailImage: "/22.png", mobileLeft: "45%", mobileTop: "29%" },
+      { left: "45%", top: "10%", detailImage: "/22.webp", mobileLeft: "45%", mobileTop: "29%" },
 
       // Bottom hem
-      { left: "39%", top: "90%", detailImage: "/11.png", mobileLeft: "39%", mobileTop: "72%" },
+      { left: "39%", top: "90%", detailImage: "/11.webp", mobileLeft: "39%", mobileTop: "72%" },
     ],
   },
 }

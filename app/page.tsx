@@ -32,11 +32,15 @@ export default function HomePage() {
       <div className="relative min-h-screen">
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(/images/new-manufacturing-bg.png)",
-          }}
-        >
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat">
+            <Image
+              src="/main.webp"
+              alt="Background"
+              layout="fill"
+              objectFit="cover"
+              className="absolute inset-0"
+              priority
+            />
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
