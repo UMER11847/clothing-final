@@ -20,38 +20,6 @@ export default function HomePage() {
   // 🔥 Now track activeHotspot index (not image string)
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
 
-  const products = {
-    "T-Shirt": {
-      title: "T-Shirt",
-      image: "",
-      hotspots: [
-        { left: "500px", top: "120px" },
-        { left: "350px", top: "200px" },
-        { left: "200px", top: "300px" },
-        { left: "400px", top: "300px" },
-      ],
-    },
-    Hoodie: {
-      title: "Hoodie",
-      image: "/images/hoodie-product.png",
-      hotspots: [
-        { left: "580px", top: "300px", detailImage: "/2.png" },
-        { left: "520px", top: "400px", detailImage: "/1.png" },
-        { left: "330px", top: "510px", detailImage: "/4.png" },
-        { left: "650px", top: "450px", detailImage: "/3.png" },
-      ],
-    },
-    Pants: {
-      title: "Pants",
-      image: "",
-      hotspots: [
-        { left: "300px", top: "150px" },
-        { left: "250px", top: "250px" },
-        { left: "350px", top: "250px" },
-        { left: "300px", top: "350px" },
-      ],
-    },
-  };
 
   const getActiveDotIndex = () => {
     const productKeys = Object.keys(products);
@@ -73,44 +41,35 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10">
-          <div className="flex justify-between items-center pt-4 px-8">
+          <div className="flex justify-between items-center pt-8 md:pt-4 px-4 md:px-8">
             <Image
               src="/images/cloththread-logo.png"
               alt="ClothThread Logo"
-              width={150}
-              height={45}
-              className="object-contain"
+              width={120}
+              height={36}
+              className="object-contain md:w-[200px] md:h-[65px]"
             />
 
             {/* Navigation */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               {/* Menu */}
               <div className="relative">
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
-                  className="flex items-center gap-2 text-white text-lg font-medium hover:opacity-80 transition-opacity"
+                  className="flex items-center gap-1 md:gap-2 text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
                 >
                   Menu
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
                 </button>
                 {menuOpen && (
                   <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-20">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                       About Us
                     </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                       Services
                     </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                       Contact
                     </a>
                   </div>
@@ -121,10 +80,10 @@ export default function HomePage() {
               <div className="relative">
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="flex items-center gap-2 text-white text-lg font-medium hover:opacity-80 transition-opacity"
+                  className="flex items-center gap-1 md:gap-2 text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
                 >
                   Search
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
                 </button>
                 {searchOpen && (
                   <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-lg p-4 z-20">
@@ -139,11 +98,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero CTA */}
-          <div className="flex items-end justify-center min-h-[calc(100vh-140px)] pb-25">
+          <div className="flex items-end justify-center min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-140px)] pb-35 md:pb-25 px-4">
             <Button
               onClick={() => window.open("/manufacturing", "_blank")}
-              className="px-6 py-7 text-3xl font-semibold text-white border-0 hover:opacity-90 transition-opacity flex items-center gap-4"
+              className="px-4 py-4 md:px-6 md:py-7 text-lg md:text-3xl font-semibold text-white border-0 hover:opacity-90 transition-opacity flex items-center gap-2 md:gap-4 rounded-lg md:rounded-lg"
               style={{
                 background: "linear-gradient(135deg, #25A74B 0%, #99E8B0 100%)",
               }}
@@ -152,15 +110,14 @@ export default function HomePage() {
               <Image
                 src="/images/arrow-icon.png"
                 alt="Arrow"
-                width={25}
-                height={25}
-                className="object-contain"
+                width={20}
+                height={20}
+                className="object-contain md:w-[25px] md:h-[25px]"
               />
             </Button>
           </div>
         </div>
       </div>
-
       <div>
         <HeroBanner />
       </div>
@@ -178,7 +135,12 @@ export default function HomePage() {
       </div>
 
       {/* Contact Section */}
-      <ContactSection />
+<section>
+  <ContactSection />
+</section>
+ 
+
     </div>
+    
   );
 }
