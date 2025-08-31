@@ -112,7 +112,7 @@ export default function HomePage() {
             >
               Apply for Manufacturing
               <Image
-                src="/images/arrow-icon.png"
+                src="/images/arrow-icon.webp"
                 alt="Arrow"
                 width={20}
                 height={20}
