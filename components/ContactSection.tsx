@@ -180,12 +180,24 @@ export default function ContactPage() {
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
                     <Facebook className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
                   </div>
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
+                  <a
+                    href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFojDO9AKEqpAAAAZkG2sKAV1u_TeRFb72_-796P8lTeT-lnaQAB7X5mVAdKjNWxe2Gw_aS8LxO25BfY3bqCuDTqWdzzy9cTLidSDquLi6Zg2dlvLbZQQF7_LpfLDWcwzX_w_k=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmuhammad-shayan-118130219%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer"
+                  >
                     <Linkedin className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                  </div>
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
+                  </a>
+                  <a
+                    href="https://www.instagram.com/cloththread/?igsh=dm1sODJpbHd3MGo%3D#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer"
+                  >
                     <Instagram className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -280,12 +292,24 @@ export default function ContactPage() {
               <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
                 <Facebook className="w-4 h-4 text-green-600" />
               </div>
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
+              <a
+                href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFojDO9AKEqpAAAAZkG2sKAV1u_TeRFb72_-796P8lTeT-lnaQAB7X5mVAdKjNWxe2Gw_aS8LxO25BfY3bqCuDTqWdzzy9cTLidSDquLi6Zg2dlvLbZQQF7_LpfLDWcwzX_w_k=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmuhammad-shayan-118130219%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer"
+              >
                 <Linkedin className="w-4 h-4 text-green-600" />
-              </div>
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
+              </a>
+              <a
+                href="https://www.instagram.com/cloththread/?igsh=dm1sODJpbHd3MGo%3D#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer"
+              >
                 <Instagram className="w-4 h-4 text-green-600" />
-              </div>
+              </a>
             </div>
           </div>
         </div>
