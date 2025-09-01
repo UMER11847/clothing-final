@@ -20,19 +20,12 @@ export default function HomePage() {
   // 🔥 Now track activeHotspot index (not image string)
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
 
-
-  const getActiveDotIndex = () => {
-    const productKeys = Object.keys(products);
-    return productKeys.indexOf(activeProduct);
-  };
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
             <Image
               src="/main.webp"
               alt="Background"
@@ -45,35 +38,39 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10">
-          <div className="flex justify-between items-center pt-8 md:pt-4 px-4 md:px-8">
+          {/* Navigation Header */}
+          <div className="flex justify-between items-center pt-4 sm:pt-6 md:pt-8 px-4 sm:px-6 md:px-8">
             <Image
               src="/images/cloththread-logo.png"
               alt="ClothThread Logo"
               width={120}
               height={36}
-              className="object-contain md:w-[200px] md:h-[65px]"
+              className="object-contain w-[100px] h-[30px] sm:w-[120px] sm:h-[36px] md:w-[200px] md:h-[65px]"
             />
 
             {/* Navigation */}
-            <div className="flex items-center gap-2 md:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               {/* Menu */}
               <div className="relative">
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
-                  className="flex items-center gap-1 md:gap-2 text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+                  className="flex items-center gap-1 sm:gap-2 text-white text-sm sm:text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
                 >
                   Menu
-                  <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
+                  <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
                 {menuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-20">
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                      About Us
+                  <div className="absolute top-full right-0 mt-2 w-40 sm:w-48 bg-white rounded-lg shadow-lg py-2 z-20">
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
+                      Products
                     </a>
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
+                      Yarn to Garment
+                    </a>
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
                       Services
                     </a>
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
                       Contact
                     </a>
                   </div>
@@ -84,17 +81,17 @@ export default function HomePage() {
               <div className="relative">
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="flex items-center gap-1 md:gap-2 text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+                  className="flex items-center gap-1 sm:gap-2 text-white text-sm sm:text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
                 >
                   Search
-                  <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
+                  <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
                 {searchOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-lg p-4 z-20">
+                  <div className="absolute top-full right-0 mt-2 w-56 sm:w-64 bg-white rounded-lg shadow-lg p-4 z-20">
                     <input
                       type="text"
                       placeholder="Search..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base"
                     />
                   </div>
                 )}
@@ -102,10 +99,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex items-end justify-center min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-140px)] pb-35 md:pb-25 px-4">
+          {/* Hero Content */}
+          <div className="flex items-end justify-center min-h-[calc(100vh-120px)] sm:min-h-[calc(100vh-140px)] md:min-h-[calc(100vh-160px)] pb-25 sm:pb-12 md:pb-16 px-4 sm:px-6 md:px-8">
             <Button
               onClick={() => window.open("/manufacturing", "_blank")}
-              className="px-4 py-4 md:px-6 md:py-7 text-lg md:text-3xl font-semibold text-white border-0 hover:opacity-90 transition-opacity flex items-center gap-2 md:gap-4 rounded-lg md:rounded-lg"
+              className="px-5 py-4 sm:px-5 sm:py-4 md:px-6 md:py-7 text-base sm:text-xl md:text-3xl font-semibold text-white border-0 hover:opacity-90 transition-opacity flex items-center gap-2 sm:gap-3 md:gap-4 rounded-lg"
               style={{
                 background: "linear-gradient(135deg, #25A74B 0%, #99E8B0 100%)",
               }}
@@ -116,35 +114,34 @@ export default function HomePage() {
                 alt="Arrow"
                 width={20}
                 height={20}
-                className="object-contain md:w-[25px] md:h-[25px]"
+                className="object-contain w-[16px] h-[16px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px]"
               />
             </Button>
           </div>
         </div>
       </div>
-      <div>
+      
+      {/* Main Content Sections */}
+      <div className="w-full">
         <HeroBanner />
       </div>
-      <div>
+      <div className="w-full">
         <ServicesSection />
       </div>
-      <div>
+      <div className="w-full">
         <YarnToGarment />
       </div>
-      <div>
+      <div className="w-full">
         <ProductsSection />
       </div>
-      <div>
+      <div className="w-full">
         <StatsSection />
       </div>
 
       {/* Contact Section */}
-<section>
-  <ContactSection />
-</section>
- 
-
+      <section className="w-full">
+        <ContactSection />
+      </section>
     </div>
-    
   );
 }

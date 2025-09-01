@@ -8,6 +8,81 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* Responsive design improvements */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsive text sizing */
+.responsive-text {
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+.responsive-heading {
+  font-size: clamp(24px, 6vw, 48px);
+}
+
+.responsive-subheading {
+  font-size: clamp(18px, 4vw, 24px);
+}
+
+/* Responsive spacing */
+.responsive-padding {
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.responsive-margin {
+  margin: clamp(1rem, 4vw, 2rem);
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* Fix for absolute positioned elements on mobile */
+@media (max-width: 768px) {
+  .mobile-relative {
+    position: relative !important;
+  }
+  
+  .mobile-static {
+    position: static !important;
+  }
+}
+
 :root {
   --font-sans: 'Causten', sans-serif;
   --background: oklch(1 0 0);
