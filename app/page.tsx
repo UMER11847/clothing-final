@@ -61,16 +61,16 @@ export default function HomePage() {
                 </button>
                 {menuOpen && (
                   <div className="absolute top-full right-0 mt-2 w-40 sm:w-48 bg-white rounded-lg shadow-lg py-2 z-20">
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
+                    <a href="#products" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
                       Products
                     </a>
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
+                    <a href="#yarn-to-garments" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
                       Yarn to Garment
                     </a>
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
+                    <a href="#services" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
                       Services
                     </a>
-                    <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
+                    <a href="#contact" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-sm sm:text-base">
                       Contact
                     </a>
                   </div>
@@ -125,13 +125,13 @@ export default function HomePage() {
       <div className="w-full">
         <HeroBanner />
       </div>
-      <div className="w-full">
+      <div id="services" className="w-full">
         <ServicesSection />
       </div>
-      <div className="w-full">
+      <div id="yarn-to-garments" className="w-full">
         <YarnToGarment />
       </div>
-      <div className="w-full">
+      <div id="products" className="w-full">
         <ProductsSection />
       </div>
       <div className="w-full">
@@ -139,7 +139,7 @@ export default function HomePage() {
       </div>
 
       {/* Contact Section */}
-      <section className="w-full">
+      <section id="contact" className="w-full">
         <ContactSection />
       </section>
     </div>
