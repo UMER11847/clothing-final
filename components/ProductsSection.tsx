@@ -50,7 +50,7 @@ const products: Record<string, Product> = {
         detailImage: "/3.webp",
         // Mobile adjustments (optional - only add if needed)
         mobileLeft: "35%", 
-        mobileTop: "83%" 
+        mobileTop: "72%" 
       },
       { 
         left: "69%", 
@@ -59,7 +59,7 @@ const products: Record<string, Product> = {
         isRightSide: true,
         // Mobile adjustments (optional - only add if needed)
         mobileLeft: "89%", 
-        mobileTop: "81%" 
+        mobileTop: "70%" 
       },
     ],
   },
@@ -72,16 +72,16 @@ const products: Record<string, Product> = {
         top: "21%", 
         detailImage: "/33.webp",
         // Mobile adjustments (optional - only add if needed)
-        // mobileLeft: "57%", 
-        // mobileTop: "23%" 
+        mobileLeft: "55%", 
+        mobileTop: "32%" 
       },
       { 
         left: "45%", 
         top: "10%", 
         detailImage: "/22.webp",
         // Mobile adjustments (optional - only add if needed)
-        // mobileLeft: "47%", 
-        // mobileTop: "12%" 
+        mobileLeft: "45%", 
+        mobileTop: "25%" 
       },
       { 
         left: "45%", 
@@ -89,7 +89,7 @@ const products: Record<string, Product> = {
         detailImage: "/11.webp",
         // Mobile adjustments (optional - only add if needed)
         mobileLeft: "35%", 
-        mobileTop: "85%" 
+        mobileTop: "72%" 
       },
     ],
   },
@@ -187,8 +187,8 @@ export default function ProductsSection() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
         {/* Product Image Container */}
-        <div className="relative rounded-2xl sm:rounded-3xl px-4 sm:px-8 md:px-12 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-6 sm:pb-8 md:pb-12 lg:pb-16 xl:pb-20 mb-6 sm:mb-8 w-full max-w-[95%] bg-[rgba(240,252,243,1)] mx-auto">
-          <div className="relative mx-auto max-w-full w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] flex items-center justify-center">
+        <div className="relative rounded-2xl sm:rounded-3xl px-0 sm:px-8 md:px-12 pt-0 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-0 sm:pb-8 md:pb-12 lg:pb-16 xl:pb-20 mb-6 sm:mb-8 w-full max-w-[100%] sm:max-w-[95%] bg-[rgba(240,252,243,1)] mx-auto">
+          <div className="relative mx-auto max-w-full w-full h-[75vh] sm:h-[560px] md:h-[680px] lg:h-[760px] xl:h-[860px] flex items-center justify-center">
             <div 
               className="relative w-full h-full flex items-center justify-center"
               style={{
