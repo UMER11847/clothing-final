@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -22,6 +22,9 @@ export default function ManufacturingForm() {
     applyingFor: [] as string[],
   })
 
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string>("")
+
   const [isDragOver, setIsDragOver] = useState(false)
   const [selectedCountryCode, setSelectedCountryCode] = useState({
     code: "+92",
@@ -30,6 +33,7 @@ export default function ManufacturingForm() {
   })
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const countryCodes = [
     { code: "+1", flag: "🇺🇸", name: "United States" },
@@ -52,6 +56,30 @@ export default function ManufacturingForm() {
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
+
+  const convertFileToBase64 = (file: File) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const base64String = e.target?.result as string
+      // Do NOT inject base64 into form field; keep it only for preview
+      setFormData((prev) => ({ ...prev, imageUrl: "" }))
+      setImagePreview(base64String)
+      setUploadedFile(file)
+    }
+    reader.readAsDataURL(file)
+  }
+
+  // Clear imageUrl whenever a real file is selected to prevent large variables
+  useEffect(() => {
+    if (uploadedFile) {
+      setFormData((prev) => ({ ...prev, imageUrl: "" }))
+      // Also clear the DOM field value if present (HMR can keep stale values)
+      if (formRef.current) {
+        const imgInput = formRef.current.querySelector('input[name="imageUrl"]') as HTMLInputElement | null
+        if (imgInput) imgInput.value = ""
+      }
+    }
+  }, [uploadedFile])
 
   const handleCheckboxChange = (field: "businessCategory" | "applyingFor", value: string, checked: boolean) => {
     setFormData((prev) => ({
@@ -83,9 +111,19 @@ export default function ManufacturingForm() {
     if (files.length > 0) {
       const file = files[0]
       if (file.type.startsWith("image/")) {
-        const imageUrl = URL.createObjectURL(file)
-        handleInputChange("imageUrl", imageUrl)
+        convertFileToBase64(file)
         console.log("[v0] Image dropped:", file.name)
+
+        // Populate the hidden file input so sendForm attaches it
+        if (fileInputRef.current) {
+          try {
+            const dataTransfer = new DataTransfer()
+            dataTransfer.items.add(file)
+            fileInputRef.current.files = dataTransfer.files
+          } catch (err) {
+            console.warn("Could not set input files via DataTransfer", err)
+          }
+        }
       }
     }
   }
@@ -107,27 +145,58 @@ export default function ManufacturingForm() {
       applyingFor: formData.applyingFor.join(", "),
     }
 
-    emailjs
-      .send("service_7k8wrv6", "template_vt0wn58", templateParams, "n9Oj-NpM3MhhR5xLH")
-      .then(() => {
-        alert("✅ Form submitted successfully!")
-        setFormData({
-          imageUrl: "",
-          email: "",
-          firstName: "",
-          lastName: "",
-          country: "",
-          phoneNumber: "",
-          website: "",
-          businessName: "",
-          businessCategory: [],
-          applyingFor: [],
+    const serviceId = "service_7k8wrv6"
+    const templateId = "template_vt0wn58"
+    const publicKey = "n9Oj-NpM3MhhR5xLH"
+
+    const onSuccess = () => {
+      alert("✅ Form submitted successfully!")
+      setFormData({
+        imageUrl: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        country: "",
+        phoneNumber: "",
+        website: "",
+        businessName: "",
+        businessCategory: [],
+        applyingFor: [],
+      })
+      setUploadedFile(null)
+      setImagePreview("")
+    }
+
+    const onError = (err: any) => {
+      console.error("EmailJS Error:", err)
+      if (err?.status) console.error("Status:", err.status)
+      if (err?.text) console.error("Text:", err.text)
+      alert("❌ Something went wrong. Please try again.")
+    }
+
+    // If a file is uploaded, use sendForm to send it as an attachment
+    if (uploadedFile && formRef.current) {
+      // Ensure large base64 (if any) is not submitted as a variable
+      const imgInput = formRef.current.querySelector('input[name="imageUrl"]') as HTMLInputElement | null
+      let originalName = ""
+      if (imgInput) {
+        if (imgInput.value) imgInput.value = ""
+        originalName = imgInput.getAttribute("name") || ""
+        if (originalName) imgInput.removeAttribute("name")
+      }
+
+      emailjs
+        .sendForm(serviceId, templateId, formRef.current, publicKey)
+        .then(onSuccess)
+        .catch(onError)
+        .finally(() => {
+          if (imgInput && originalName) imgInput.setAttribute("name", originalName)
         })
-      })
-      .catch((err) => {
-        console.error("EmailJS Error:", err)
-        alert("❌ Something went wrong. Please try again.")
-      })
+      return
+    }
+
+    // Otherwise, send simple params (e.g., when user pasted an image URL)
+    emailjs.send(serviceId, templateId, templateParams, publicKey).then(onSuccess).catch(onError)
   }
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -135,8 +204,7 @@ export default function ManufacturingForm() {
     if (files && files.length > 0) {
       const file = files[0]
       if (file.type.startsWith("image/")) {
-        const imageUrl = URL.createObjectURL(file)
-        handleInputChange("imageUrl", imageUrl)
+        convertFileToBase64(file)
         console.log("[v0] Image uploaded:", file.name)
       }
     }
@@ -168,7 +236,7 @@ export default function ManufacturingForm() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="px-4 sm:px-6 md:px-8 pb-8 space-y-4 sm:space-y-6 md:space-y-8">
+        <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data" className="px-4 sm:px-6 md:px-8 pb-8 space-y-4 sm:space-y-6 md:space-y-8">
           {/* Image Upload Section */}
           <div
             className={`bg-green-50 text-center transition-colors ${
@@ -194,6 +262,7 @@ export default function ManufacturingForm() {
                 placeholder="Type or paste your image URL here"
                 value={formData.imageUrl}
                 onChange={(e) => handleInputChange("imageUrl", e.target.value)}
+                name="imageUrl"
                 className="flex-1 bg-transparent border-none text-gray-600 placeholder:text-gray-600 focus:outline-none focus:ring-0 shadow-none py-0 text-sm sm:text-base"
                 style={{
                   width: "100%",
@@ -236,7 +305,7 @@ export default function ManufacturingForm() {
                 >
                   <Download className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white" />
                 </button>
-                <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
+                <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" name="my_file" />
               </div>
             </div>
           </div>
@@ -262,6 +331,38 @@ export default function ManufacturingForm() {
             </p>
           </div>
 
+          {/* Image Preview */}
+          {imagePreview && (
+            <div className="max-w-[1175px] mx-auto px-4 sm:px-6 md:px-8">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 className="text-lg font-medium text-gray-900 mb-3">Image Preview</h3>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={imagePreview}
+                    alt="Selected image preview"
+                    className="w-20 h-20 object-cover rounded-lg border border-gray-200"
+                  />
+                  <div className="flex-1">
+                    <p className="text-sm text-gray-600">{uploadedFile?.name || "Selected image"}</p>
+                    <p className="text-xs text-gray-500">{uploadedFile ? (uploadedFile.size / 1024 / 1024).toFixed(2) : "0"} MB</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImagePreview("")
+                      setUploadedFile(null)
+                      setFormData((prev) => ({ ...prev, imageUrl: "" }))
+                      if (fileInputRef.current) fileInputRef.current.value = ""
+                    }}
+                    className="text-red-500 hover:text-red-700 text-sm font-medium"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Form Fields */}
           <div className="max-w-[1730px] mx-auto space-y-4 sm:space-y-6">
             <Input
@@ -269,6 +370,7 @@ export default function ManufacturingForm() {
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
+              name="email"
               className="w-full h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-4 sm:px-6 md:px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "100%",
@@ -284,6 +386,7 @@ export default function ManufacturingForm() {
                 placeholder="First Name"
                 value={formData.firstName}
                 onChange={(e) => handleInputChange("firstName", e.target.value)}
+                name="firstName"
                 className="h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-4 sm:px-6 md:px-[31px] text-gray-400 placeholder:text-gray-400"
                 style={{
                   width: "100%",
@@ -297,6 +400,7 @@ export default function ManufacturingForm() {
                 placeholder="Last Name"
                 value={formData.lastName}
                 onChange={(e) => handleInputChange("lastName", e.target.value)}
+                name="lastName"
                 className="h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-4 sm:px-6 md:px-[31px] text-gray-400 placeholder:text-gray-400"
                 style={{
                   width: "100%",
@@ -312,6 +416,7 @@ export default function ManufacturingForm() {
               placeholder="Country"
               value={formData.country}
               onChange={(e) => handleInputChange("country", e.target.value)}
+              name="country"
               className="w-full h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-4 sm:px-6 md:px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "100%",
@@ -379,6 +484,7 @@ export default function ManufacturingForm() {
                 placeholder="Phone Number"
                 value={formData.phoneNumber}
                 onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+                name="phoneNumberRaw"
                 className="w-full h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 overflow-hidden text-gray-400 placeholder:text-gray-400 pl-[60px] sm:pl-[70px] md:pl-[80px] lg:pl-[90px]"
                 style={{
                   fontFamily: "Causten",
@@ -393,6 +499,7 @@ export default function ManufacturingForm() {
               placeholder="Official website or any social media account"
               value={formData.website}
               onChange={(e) => handleInputChange("website", e.target.value)}
+              name="website"
               className="w-full h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-4 sm:px-6 md:px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "100%",
@@ -414,6 +521,7 @@ export default function ManufacturingForm() {
               placeholder="Business Name"
               value={formData.businessName}
               onChange={(e) => handleInputChange("businessName", e.target.value)}
+              name="businessName"
               className="w-full h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] rounded-[5px] border border-gray-200 bg-gray-100 opacity-100 px-4 sm:px-6 md:px-[31px] text-gray-400 placeholder:text-gray-400"
               style={{
                 width: "100%",
@@ -486,6 +594,12 @@ export default function ManufacturingForm() {
           >
             Submit
           </Button>
+
+          {/* Hidden fields for values not directly on inputs */}
+          <input type="hidden" name="businessCategory" value={formData.businessCategory.join(", ")} />
+          <input type="hidden" name="applyingFor" value={formData.applyingFor.join(", ")} />
+          <input type="hidden" name="selectedDialCode" value={selectedCountryCode.code} />
+          <input type="hidden" name="phoneNumber" value={`${selectedCountryCode.code} ${formData.phoneNumber}`} />
         </form>
       </div>
     </div>
