@@ -92,15 +92,18 @@ export default function HeroBanner() {
 
         {/* Overlay Content */}
         <div className="absolute inset-0 flex flex-col justify-center items-end px-4 z-10">
-          <div className="mb-4" style={{ textAlign: 'left', maxWidth: '240px', marginRight: '12px' }}>
+          <div className="mb-3" style={{ textAlign: 'left', maxWidth: '270px', marginRight: '35px' }}>
                          <h1
                className="text-white mb-1"
                style={{
                  fontFamily: "Causten, sans-serif",
                  fontWeight: 900,
-                 fontSize: "30px",
-                 lineHeight: "100%",
-                 letterSpacing: "-1px",
+                 fontSize: "37px",
+                 lineHeight: "77%",
+                 letterSpacing: "0%",
+                 width: "250px",
+                 transform: "rotate(0deg)",
+                 whiteSpace: "nowrap",
                }}
              >
                Blanks Coming
@@ -110,22 +113,29 @@ export default function HeroBanner() {
                style={{
                  fontFamily: "Causten, sans-serif",
                  fontWeight: 900,
-                 fontSize: "30px",
-                 lineHeight: "100%",
-                 letterSpacing: "-1px",
+                 fontSize: "37px",
+                 lineHeight: "77%",
+                 letterSpacing: "0%",
+                 width: "250px",
+                 transform: "rotate(0deg)",
                }}
              >
                Soon
                <span className="inline-block w-2 h-2 bg-green-500 rounded-full ml-1"></span>
              </h1>
              <h2
-               className="text-white mb-3"
+               className="text-white mb-0"
                style={{
                  fontFamily: "Causten, sans-serif",
-                 fontWeight: 900,
-                 fontSize: "22px",
+                 fontWeight: 600,
+                 fontSize: "40px",
                  lineHeight: "100%",
-                 letterSpacing: "-1px",
+                 letterSpacing: "0%",
+                 width: "240px",
+                 height: "48px",
+                 textAlign: "center",
+                 transform: "rotate(0deg)",
+                 whiteSpace: "nowrap",
                }}
              >
                Early Signup
@@ -133,21 +143,21 @@ export default function HeroBanner() {
           </div>
 
           {/* Email Input Field */}
-          <div className="relative w-full max-w-[240px]" style={{ marginLeft: '0' }}>
+          <div className="relative w-full max-w-[240px]" style={{ marginRight: '39px' }}>
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3 w-3 text-gray-400 z-10" />
                          <Input
                type="email"
                placeholder="Enter your email address"
                value={email}
                onChange={(e) => setEmail(e.target.value)}
-               className="pl-8 pr-8 h-10 bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 w-full text-sm"
+               className="pl-8 pr-8 h-9 bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 w-full text-xs"
                style={{ borderRadius: "6px" }}
              />
             <button
               onClick={sendEmail}
               className="absolute right-2 top-1/2 -translate-y-1/2 
                flex items-center justify-center 
-               w-6 h-6 rounded-full bg-green-500 text-white hover:bg-green-600 transition"
+               w-5 h-5 rounded-full bg-green-500 text-white hover:bg-green-600 transition"
             >
               <ArrowRight className="h-3 w-3" />
             </button>
