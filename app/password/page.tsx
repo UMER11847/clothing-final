@@ -1,9 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default function PasswordPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}> 
+      <PasswordForm />
+    </Suspense>
+  );
+}
+
+function PasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [password, setPassword] = useState("");
@@ -13,7 +23,6 @@ export default function PasswordPage() {
   const returnTo = searchParams.get("returnTo") || "/";
 
   useEffect(() => {
-    // If cookie already present, redirect to home
     async function checkAuth() {
       try {
         const res = await fetch("/api/auth/status", { cache: "no-store" });
@@ -80,5 +89,4 @@ export default function PasswordPage() {
     </div>
   );
 }
-
 
