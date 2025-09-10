@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
@@ -99,6 +99,7 @@ export default function ProductsSection() {
   const [activeProduct, setActiveProduct] = useState("Hoodie")
   const [activeHotspot, setActiveHotspot] = useState<number>(0)
   const [isMobile, setIsMobile] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   // Reset active hotspot when product changes
   useEffect(() => {
@@ -119,6 +120,19 @@ export default function ProductsSection() {
     window.addEventListener('resize', checkMobile)
     
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Close active hotspot when clicking outside the section
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      const sectionEl = sectionRef.current
+      if (!sectionEl) return
+      const targetNode = event.target as Node | null
+      if (targetNode && sectionEl.contains(targetNode)) return
+      setActiveHotspot(-1)
+    }
+    document.addEventListener('click', handleDocumentClick)
+    return () => document.removeEventListener('click', handleDocumentClick)
   }, [])
 
   // Calculate responsive hotspot positioning
@@ -154,7 +168,7 @@ export default function ProductsSection() {
   }
 
   return (
-    <section className="flex flex-col min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:min-h-[900px] bg-white">
+    <section ref={sectionRef} className="flex flex-col min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:min-h-[900px] bg-white">
       {/* Header */}
       <div className="pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-8 px-4 sm:px-6 md:px-8 text-center">
         <div className="flex items-center justify-center mb-2 sm:mb-4">
@@ -197,7 +211,7 @@ export default function ProductsSection() {
                 maxHeight: '100%'
               }}
             >
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full" onClick={() => setActiveHotspot(-1)}>
                 <Image
                   src={products[activeProduct].image}
                   alt={`${products[activeProduct].title} Product`}
@@ -222,7 +236,10 @@ export default function ProductsSection() {
                     >
                       <button
                         className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 flex items-center justify-center transition-transform hover:scale-110"
-                        onClick={() => setActiveHotspot(isActive ? -1 : index)}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setActiveHotspot(isActive ? -1 : index)
+                        }}
                       >
                         <Image
                           src="/plus.png"
@@ -235,6 +252,7 @@ export default function ProductsSection() {
 
                       {/* Popup */}
                       <div
+                        onClick={(e) => e.stopPropagation()}
                         className={`absolute ${popupPosition} rounded-md p-[1px] z-50 transition-all duration-300 ease-in-out`}
                         style={{
                           background:

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Twitter, Facebook, Linkedin, Instagram } from "lucide-react"
+import { Linkedin, Instagram } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -174,12 +174,6 @@ export default function ContactPage() {
                   Social Media:
                 </h3>
                 <div className="flex justify-start space-x-3 md:flex-row md:justify-end md:mr-[48px] md:space-x-4 md:mt-[-54px]">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
-                    <Twitter className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                  </div>
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
-                    <Facebook className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                  </div>
                   <a
                     href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFojDO9AKEqpAAAAZkG2sKAV1u_TeRFb72_-796P8lTeT-lnaQAB7X5mVAdKjNWxe2Gw_aS8LxO25BfY3bqCuDTqWdzzy9cTLidSDquLi6Zg2dlvLbZQQF7_LpfLDWcwzX_w_k=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmuhammad-shayan-118130219%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app"
                     target="_blank"
@@ -286,12 +280,6 @@ export default function ContactPage() {
           <div className="text-left">
             <h3 className="text-gray-900 mb-4 font-bold text-sm">Social Media:</h3>
             <div className="flex justify-start space-x-3">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
-                <Twitter className="w-4 h-4 text-green-600" />
-              </div>
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors cursor-pointer">
-                <Facebook className="w-4 h-4 text-green-600" />
-              </div>
               <a
                 href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFojDO9AKEqpAAAAZkG2sKAV1u_TeRFb72_-796P8lTeT-lnaQAB7X5mVAdKjNWxe2Gw_aS8LxO25BfY3bqCuDTqWdzzy9cTLidSDquLi6Zg2dlvLbZQQF7_LpfLDWcwzX_w_k=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmuhammad-shayan-118130219%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app"
                 target="_blank"

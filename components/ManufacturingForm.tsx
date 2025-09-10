@@ -574,7 +574,7 @@ export default function ManufacturingForm() {
                   className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 data-[state=checked]:bg-green-500 data-[state=checked]:border-green-500"
                 />
                 <label htmlFor="wholesale-blanks" className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl">
-                  Wholesale Blanks
+                Manufacturing 
                 </label>
               </div>
             </div>

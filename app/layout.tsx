@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'ClotheThread',
+  title: 'ClothThread',
   icons: {
     icon: '/Group 14.png',
     // apple: '/apple-touch-icon.png',
@@ -23,9 +21,7 @@ export default function RootLayout({
       <head>
         <style>{`
 html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
+  font-family: Causten, sans-serif;
 }
         `}</style>
       </head>
