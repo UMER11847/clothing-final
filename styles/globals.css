@@ -123,4 +123,14 @@
   input, textarea, select, button {
     font-family: inherit;
   }
+  /* Ensure form controls use Causten at 500 weight with cap-height trim */
+  input, textarea, select {
+    font-family: Causten, sans-serif;
+    font-weight: 500;
+    leading-trim: both;
+    text-edge: cap;
+  }
+  input::placeholder, textarea::placeholder {
+    font-weight: 500;
+  }
 }
